@@ -38,11 +38,11 @@ Partial Class MainForm
         '
         'ButtonCalculate
         '
-        Me.ButtonCalculate.Location = New System.Drawing.Point(45, 82)
+        Me.ButtonCalculate.Location = New System.Drawing.Point(26, 82)
         Me.ButtonCalculate.Name = "ButtonCalculate"
-        Me.ButtonCalculate.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonCalculate.TabIndex = 0
-        Me.ButtonCalculate.Text = "Oblicz"
+        Me.ButtonCalculate.Size = New System.Drawing.Size(115, 23)
+        Me.ButtonCalculate.TabIndex = 5
+        Me.ButtonCalculate.Text = "Calculate volume"
         Me.ButtonCalculate.UseVisualStyleBackColor = True
         '
         'LabelCenterX
@@ -50,88 +50,91 @@ Partial Class MainForm
         Me.LabelCenterX.AutoSize = True
         Me.LabelCenterX.Location = New System.Drawing.Point(13, 13)
         Me.LabelCenterX.Name = "LabelCenterX"
-        Me.LabelCenterX.Size = New System.Drawing.Size(54, 13)
+        Me.LabelCenterX.Size = New System.Drawing.Size(51, 13)
         Me.LabelCenterX.TabIndex = 1
-        Me.LabelCenterX.Text = "Srodek X:"
+        Me.LabelCenterX.Text = "Center X:"
         '
         'LabelCenterY
         '
         Me.LabelCenterY.AutoSize = True
         Me.LabelCenterY.Location = New System.Drawing.Point(184, 13)
         Me.LabelCenterY.Name = "LabelCenterY"
-        Me.LabelCenterY.Size = New System.Drawing.Size(54, 13)
+        Me.LabelCenterY.Size = New System.Drawing.Size(51, 13)
         Me.LabelCenterY.TabIndex = 2
-        Me.LabelCenterY.Text = "Srodek Y:"
+        Me.LabelCenterY.Text = "Center Y:"
         '
         'LabelRadius
         '
         Me.LabelRadius.AutoSize = True
         Me.LabelRadius.Location = New System.Drawing.Point(13, 39)
         Me.LabelRadius.Name = "LabelRadius"
-        Me.LabelRadius.Size = New System.Drawing.Size(48, 13)
+        Me.LabelRadius.Size = New System.Drawing.Size(43, 13)
         Me.LabelRadius.TabIndex = 3
-        Me.LabelRadius.Text = "Promien:"
+        Me.LabelRadius.Text = "Radius:"
         '
         'LabelHeight
         '
         Me.LabelHeight.AutoSize = True
         Me.LabelHeight.Location = New System.Drawing.Point(184, 39)
         Me.LabelHeight.Name = "LabelHeight"
-        Me.LabelHeight.Size = New System.Drawing.Size(60, 13)
+        Me.LabelHeight.Size = New System.Drawing.Size(41, 13)
         Me.LabelHeight.TabIndex = 4
-        Me.LabelHeight.Text = "Wysokosc:"
+        Me.LabelHeight.Text = "Height:"
         '
         'LabelVolume
         '
         Me.LabelVolume.AutoSize = True
         Me.LabelVolume.Location = New System.Drawing.Point(12, 140)
         Me.LabelVolume.Name = "LabelVolume"
-        Me.LabelVolume.Size = New System.Drawing.Size(52, 13)
+        Me.LabelVolume.Size = New System.Drawing.Size(45, 13)
         Me.LabelVolume.TabIndex = 5
-        Me.LabelVolume.Text = "Objetosc:"
+        Me.LabelVolume.Text = "Volume:"
         '
         'TextBoxCenterX
         '
         Me.TextBoxCenterX.Location = New System.Drawing.Point(73, 10)
         Me.TextBoxCenterX.Name = "TextBoxCenterX"
         Me.TextBoxCenterX.Size = New System.Drawing.Size(68, 20)
-        Me.TextBoxCenterX.TabIndex = 6
+        Me.TextBoxCenterX.TabIndex = 1
         '
         'TextBoxRadius
         '
         Me.TextBoxRadius.Location = New System.Drawing.Point(73, 39)
         Me.TextBoxRadius.Name = "TextBoxRadius"
         Me.TextBoxRadius.Size = New System.Drawing.Size(68, 20)
-        Me.TextBoxRadius.TabIndex = 7
+        Me.TextBoxRadius.TabIndex = 3
         '
         'TextBoxHeight
         '
         Me.TextBoxHeight.Location = New System.Drawing.Point(258, 39)
         Me.TextBoxHeight.Name = "TextBoxHeight"
         Me.TextBoxHeight.Size = New System.Drawing.Size(68, 20)
-        Me.TextBoxHeight.TabIndex = 8
+        Me.TextBoxHeight.TabIndex = 4
         '
         'TextBoxCenterY
         '
         Me.TextBoxCenterY.Location = New System.Drawing.Point(258, 10)
         Me.TextBoxCenterY.Name = "TextBoxCenterY"
         Me.TextBoxCenterY.Size = New System.Drawing.Size(68, 20)
-        Me.TextBoxCenterY.TabIndex = 9
+        Me.TextBoxCenterY.TabIndex = 2
         '
         'TextBoxVolume
         '
         Me.TextBoxVolume.Location = New System.Drawing.Point(73, 137)
         Me.TextBoxVolume.Name = "TextBoxVolume"
+        Me.TextBoxVolume.ReadOnly = True
         Me.TextBoxVolume.Size = New System.Drawing.Size(253, 20)
         Me.TextBoxVolume.TabIndex = 10
+        Me.TextBoxVolume.TabStop = False
+        Me.TextBoxVolume.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ButtonDraw
         '
         Me.ButtonDraw.Location = New System.Drawing.Point(216, 82)
         Me.ButtonDraw.Name = "ButtonDraw"
         Me.ButtonDraw.Size = New System.Drawing.Size(75, 23)
-        Me.ButtonDraw.TabIndex = 11
-        Me.ButtonDraw.Text = "Rysuj"
+        Me.ButtonDraw.TabIndex = 6
+        Me.ButtonDraw.Text = "Draw"
         Me.ButtonDraw.UseVisualStyleBackColor = True
         '
         'MainForm

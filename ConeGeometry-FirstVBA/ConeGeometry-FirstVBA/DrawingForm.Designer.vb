@@ -30,7 +30,6 @@ Partial Class DrawingForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(784, 612)
         Me.Name = "DrawingForm"
-        Me.Text = "DrawingForm"
         Me.ResumeLayout(False)
 
     End Sub

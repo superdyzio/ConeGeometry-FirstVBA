@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeometricIssues-FirstVBA", "GeometricIssues-FirstVBA\GeometricIssues-FirstVBA.vbproj", "{EB62462E-203B-424B-8733-CE61A5E473A2}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConeGeometry-FirstVBA", "ConeGeometry-FirstVBA\ConeGeometry-FirstVBA.vbproj", "{EB62462E-203B-424B-8733-CE61A5E473A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

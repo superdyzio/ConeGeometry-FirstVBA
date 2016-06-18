@@ -1,2 +1,3 @@
-# ConeGeometrys-FirstVBA
-first Visual Basic application - calculating cone volume and drawing two different projections
+# ConeGeometry-FirstVBA
+
+It's my first and only Visual Basic application, written for my colleague just to help her pass some course.
