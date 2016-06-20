@@ -93,6 +93,7 @@ Partial Class MainForm
         'TextBoxCenterX
         '
         Me.TextBoxCenterX.Location = New System.Drawing.Point(73, 10)
+        Me.TextBoxCenterX.MaxLength = 10
         Me.TextBoxCenterX.Name = "TextBoxCenterX"
         Me.TextBoxCenterX.Size = New System.Drawing.Size(68, 20)
         Me.TextBoxCenterX.TabIndex = 1
@@ -100,6 +101,7 @@ Partial Class MainForm
         'TextBoxRadius
         '
         Me.TextBoxRadius.Location = New System.Drawing.Point(73, 39)
+        Me.TextBoxRadius.MaxLength = 10
         Me.TextBoxRadius.Name = "TextBoxRadius"
         Me.TextBoxRadius.Size = New System.Drawing.Size(68, 20)
         Me.TextBoxRadius.TabIndex = 3
@@ -107,6 +109,7 @@ Partial Class MainForm
         'TextBoxHeight
         '
         Me.TextBoxHeight.Location = New System.Drawing.Point(258, 39)
+        Me.TextBoxHeight.MaxLength = 10
         Me.TextBoxHeight.Name = "TextBoxHeight"
         Me.TextBoxHeight.Size = New System.Drawing.Size(68, 20)
         Me.TextBoxHeight.TabIndex = 4
@@ -114,6 +117,7 @@ Partial Class MainForm
         'TextBoxCenterY
         '
         Me.TextBoxCenterY.Location = New System.Drawing.Point(258, 10)
+        Me.TextBoxCenterY.MaxLength = 10
         Me.TextBoxCenterY.Name = "TextBoxCenterY"
         Me.TextBoxCenterY.Size = New System.Drawing.Size(68, 20)
         Me.TextBoxCenterY.TabIndex = 2

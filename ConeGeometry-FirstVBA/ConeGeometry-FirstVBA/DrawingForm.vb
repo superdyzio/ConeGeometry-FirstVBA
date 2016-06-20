@@ -3,6 +3,14 @@
     Private projection As Boolean 'true - projection from the top, false - side projection
     Private drawingScale = 10  ' number of pixels corresponding to coordinate value equal to 1
 
+    Function getYAxisLength() As Integer
+        Return Convert.ToSingle(Me.Width / (4 * drawingScale))
+    End Function
+
+    Function getXAxisLength() As Integer
+        Return Convert.ToSingle(Me.Height / (4 * drawingScale))
+    End Function
+
     Sub New(ByVal cone As Cone, ByVal projection As Boolean)
         Me.cone = cone
         Me.projection = projection
@@ -26,7 +34,7 @@
             e.Graphics.DrawLine(pen, i * drawingScale, halfFormHeight - 5, i * drawingScale, halfFormHeight + 5)
         Next i
         For i = 1 To yAxisScale
-            e.Graphics.DrawLine(pen, halfFormWidth - 5, i * drawingScale - 5, halfFormWidth + 5, i * drawingScale - 5)
+            e.Graphics.DrawLine(pen, halfFormWidth - 5, i * drawingScale, halfFormWidth + 5, i * drawingScale)
         Next i
         ' values conversion
         Dim centerX = Convert.ToSingle(cone.GetX() * drawingScale + halfFormWidth)
