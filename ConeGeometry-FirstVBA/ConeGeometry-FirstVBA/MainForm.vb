@@ -21,15 +21,25 @@
         Dim form As New DrawingForm(cone, True)     ' first window, for projection from the top
         Dim form2 As New DrawingForm(cone, False)   ' second window, for side projection
         If (projectionFits(form.getXAxisLength, form.getYAxisLength)) Then
-            form.Show()
-            form2.Show()
+            If (cone.GetVolume > 0) Then
+                form.Show()
+                form2.Show()
+            Else
+                MessageBox.Show("Volume must be greater than zero.", "Not a cone!")
+            End If
+
         Else
-            MessageBox.Show("Specified cone will not fit into drawing form.", "Cone too big!")
+                MessageBox.Show("Specified cone will not fit into drawing form.", "Cone too big!")
         End If
     End Sub
 
     Private Function projectionFits(ByVal xLength As Integer, ByVal yLength As Integer) As Boolean
-
+        Dim correction As Integer = 2
+        If ((cone.GetX + cone.GetRadius > xLength - correction) Or (cone.GetX - cone.GetRadius < -xLength + correction) Or
+            (cone.GetY + cone.GetRadius > yLength - correction) Or (cone.GetY - cone.GetRadius < -yLength + correction) Or
+            (cone.GetY + cone.GetHeight > yLength - correction)) Then
+            Return False
+        End If
         Return True
     End Function
 
@@ -40,12 +50,20 @@
         If (length > 0) Then
             Dim lastChar As String = tb.Text.Substring(length - 1)
             Select Case (lastChar)
+                Case "-"
+                    If ((tb.Equals(TextBoxCenterX)) Or (tb.Equals(TextBoxCenterY))) Then
+                        If Not (length.Equals(1)) Then
+                            tb.Text = tb.Text.Substring(0, length - 1)
+                        End If
+                    Else
+                        tb.Text = tb.Text.Substring(0, length - 1)
+                    End If
                 Case 0 To 9
                     Dim dotIndex = tb.Text.IndexOf(",")
                     If (dotIndex > 0 And dotIndex < length - 2) Then  ' index of "," is never equal 0, because of text formatting in textbox
                         tb.Text = tb.Text.Substring(0, length - 1)
                     End If
-                    If (tb.Text.IndexOf("0").Equals(0) And dotIndex < 0) Then
+                    If (tb.Text.IndexOf("0").Equals(0) And dotIndex < 0 And length > 1) Then
                         tb.Text = tb.Text.Substring(1, tb.TextLength - 1)
                     End If
                 Case ","

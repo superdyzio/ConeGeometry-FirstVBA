@@ -4,11 +4,11 @@
     Private drawingScale = 10  ' number of pixels corresponding to coordinate value equal to 1
 
     Function getYAxisLength() As Integer
-        Return Convert.ToSingle(Me.Width / (4 * drawingScale))
+        Return Convert.ToSingle((Me.Height / 2) / drawingScale)
     End Function
 
     Function getXAxisLength() As Integer
-        Return Convert.ToSingle(Me.Height / (4 * drawingScale))
+        Return Convert.ToSingle((Me.Width / 2) / drawingScale)
     End Function
 
     Sub New(ByVal cone As Cone, ByVal projection As Boolean)
@@ -24,8 +24,8 @@
 
     Private Sub DrawingForm_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         Dim pen = Pens.Black
-        Dim halfFormHeight As Integer = Me.Height / 2
-        Dim halfFormWidth As Integer = Me.Width / 2
+        Dim halfFormHeight As Integer = (Me.Height / 2) - 20
+        Dim halfFormWidth As Integer = (Me.Width / 2) - 10
         e.Graphics.DrawLine(pen, 0, halfFormHeight, Me.Width, halfFormHeight)  ' X and Y axes
         e.Graphics.DrawLine(pen, halfFormWidth, 0, halfFormWidth, Me.Height)
         Dim xAxisScale = Convert.ToSingle(Me.Width / drawingScale)

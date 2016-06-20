@@ -29,6 +29,9 @@ Partial Class DrawingForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(984, 662)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1000, 700)
+        Me.MinimumSize = New System.Drawing.Size(1000, 700)
         Me.Name = "DrawingForm"
         Me.ResumeLayout(False)
 
