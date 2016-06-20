@@ -27,7 +27,6 @@
             Else
                 MessageBox.Show("Volume must be greater than zero.", "Not a cone!")
             End If
-
         Else
                 MessageBox.Show("Specified cone will not fit into drawing form.", "Cone too big!")
         End If
