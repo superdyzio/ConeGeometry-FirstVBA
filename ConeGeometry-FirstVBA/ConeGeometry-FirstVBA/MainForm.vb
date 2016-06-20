@@ -18,8 +18,8 @@
     End Sub
 
     Private Sub ButtonDraw_Click(sender As Object, e As EventArgs) Handles ButtonDraw.Click
-        Dim form As New DrawingForm(cone, True)     ' first window, for projection from the top
-        Dim form2 As New DrawingForm(cone, False)   ' second window, for side projection
+        Dim form As New DrawingForm(cone, DrawingForm.ProjectionType.Top)     ' first window, for projection from the top
+        Dim form2 As New DrawingForm(cone, DrawingForm.ProjectionType.Side)   ' second window, for side projection
         If (projectionFits(form.getXAxisLength, form.getYAxisLength)) Then
             If (cone.GetVolume > 0) Then
                 form.Show()

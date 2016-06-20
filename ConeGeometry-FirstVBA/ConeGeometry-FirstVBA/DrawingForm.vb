@@ -1,20 +1,25 @@
 ﻿Public Class DrawingForm
-    Private cone As Cone
-    Private projection As Boolean 'true - projection from the top, false - side projection
-    Private drawingScale = 10  ' number of pixels corresponding to coordinate value equal to 1
+    Public Enum ProjectionType As Integer
+        Side = 0
+        Top = 1
+    End Enum
 
-    Function getYAxisLength() As Integer
-        Return Convert.ToSingle((Me.Height / 2) / drawingScale)
-    End Function
+    Private cone As Cone
+    Private projection As Integer 'true - projection from the top, false - side projection
+    Private drawingScale = 10  ' number of pixels corresponding to coordinate value equal to 1
 
     Function getXAxisLength() As Integer
         Return Convert.ToSingle((Me.Width / 2) / drawingScale)
     End Function
 
-    Sub New(ByVal cone As Cone, ByVal projection As Boolean)
+    Function getYAxisLength() As Integer
+        Return Convert.ToSingle((Me.Height / 2) / drawingScale)
+    End Function
+
+    Sub New(ByVal cone As Cone, ByVal projection As Integer)
         Me.cone = cone
         Me.projection = projection
-        If (projection) Then
+        If (projection.Equals(ProjectionType.Top)) Then
             Me.Text = "Projection from the top"
         Else
             Me.Text = "Side projection"
@@ -42,7 +47,7 @@
         Dim radius = Convert.ToSingle(cone.GetRadius * drawingScale)
         Dim height = Convert.ToSingle(cone.GetHeight * (-drawingScale))
         Dim diameter = Convert.ToSingle(cone.GetDiameter * drawingScale)
-        If (projection) Then  ' drawing the appropriate projection, depending on variable
+        If (projection.Equals(ProjectionType.Top)) Then  ' drawing the appropriate projection, depending on variable
             e.Graphics.DrawEllipse(pen, centerX - radius, centerY - radius, diameter, diameter)
         Else
             e.Graphics.DrawLine(pen, centerX - radius, centerY, centerX + radius, centerY)
