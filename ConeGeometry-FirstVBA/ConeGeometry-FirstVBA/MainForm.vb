@@ -63,12 +63,12 @@
                         tb.Text = tb.Text.Substring(0, length - 1)
                     End If
                     If (tb.Text.IndexOf("0").Equals(0) And dotIndex < 0 And length > 1) Then
-                        tb.Text = tb.Text.Substring(1, tb.TextLength - 1)
+                        tb.Text = tb.Text.Substring(1, length - 1)
                     End If
                 Case ","
                     If (length.Equals(1)) Then
                         tb.Text = "0,"
-                    ElseIf (tb.Text.Substring(0, length - 1).Contains(",") Or length.Equals(10)) Then
+                    ElseIf (tb.Text.Substring(0, length - 1).Contains(",") Or length.Equals(tb.MaxLength)) Then
                         tb.Text = tb.Text.Substring(0, length - 1)
                     End If
                 Case Else
