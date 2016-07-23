@@ -1,6 +1,35 @@
 ﻿Public Class MainForm
     Private cone As Cone
 
+    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ButtonDraw.Enabled = False
+        ButtonCalculate.Enabled = False
+    End Sub
+
+    Private Sub TextBoxEnter(sender As Object, e As EventArgs) Handles TextBoxRadius.Enter, TextBoxHeight.Enter, TextBoxCenterY.Enter, TextBoxCenterX.Enter
+        Dim tb = CType(sender, TextBox)
+        tb.SelectionStart = 0
+        tb.SelectionLength = tb.TextLength
+    End Sub
+
+    Private Sub TextBoxKeyDown(sender As Object, e As KeyEventArgs) Handles TextBoxRadius.KeyDown, TextBoxHeight.KeyDown, TextBoxCenterY.KeyDown, TextBoxCenterX.KeyDown
+        Dim tb = CType(sender, TextBox)
+        Select Case (e.KeyCode)
+            Case Keys.Back
+                If (tb.SelectionLength.Equals(tb.TextLength)) Then
+                    tb.Text = ""
+                End If
+            Case Keys.Left, Keys.Right, Keys.Delete, Keys.End, Keys.Home, Keys.Insert, Keys.PageDown, Keys.PageUp
+                e.SuppressKeyPress = True
+            Case Else
+        End Select
+    End Sub
+
+    Private Sub TextBoxClick(sender As Object, e As EventArgs) Handles TextBoxRadius.Click, TextBoxHeight.Click, TextBoxCenterY.Click, TextBoxCenterX.Click
+        Dim tb = CType(sender, TextBox)
+        tb.SelectionStart = tb.TextLength
+    End Sub
+
     Private Sub ButtonCalculate_Click(sender As Object, e As EventArgs) Handles ButtonCalculate.Click
         For Each tb As TextBox In Controls.OfType(Of TextBox)
             If (tb.Text.IndexOf(",").Equals(tb.TextLength - 1)) Then
@@ -17,6 +46,16 @@
         ButtonDraw.Enabled = True
     End Sub
 
+    Private Function projectionFits(ByVal xLength As Integer, ByVal yLength As Integer) As Boolean
+        Dim correction As Integer = 2
+        If ((cone.GetX + cone.GetRadius > xLength - correction) Or (cone.GetX - cone.GetRadius < -xLength + correction) Or
+            (cone.GetY + cone.GetRadius > yLength - correction) Or (cone.GetY - cone.GetRadius < -yLength + correction) Or
+            (cone.GetY + cone.GetHeight > yLength - correction)) Then
+            Return False
+        End If
+        Return True
+    End Function
+
     Private Sub ButtonDraw_Click(sender As Object, e As EventArgs) Handles ButtonDraw.Click
         Dim form As New DrawingForm(cone, DrawingForm.ProjectionType.Top)     ' first window, for projection from the top
         Dim form2 As New DrawingForm(cone, DrawingForm.ProjectionType.Side)   ' second window, for side projection
@@ -28,19 +67,17 @@
                 MessageBox.Show("Volume must be greater than zero.", "Not a cone!")
             End If
         Else
-                MessageBox.Show("Specified cone will not fit into drawing form.", "Cone too big!")
+            MessageBox.Show("Specified cone will not fit into drawing form.", "Cone too big!")
         End If
     End Sub
 
-    Private Function projectionFits(ByVal xLength As Integer, ByVal yLength As Integer) As Boolean
-        Dim correction As Integer = 2
-        If ((cone.GetX + cone.GetRadius > xLength - correction) Or (cone.GetX - cone.GetRadius < -xLength + correction) Or
-            (cone.GetY + cone.GetRadius > yLength - correction) Or (cone.GetY - cone.GetRadius < -yLength + correction) Or
-            (cone.GetY + cone.GetHeight > yLength - correction)) Then
-            Return False
+    Private Sub EnableCalculating()
+        If (TextBoxCenterX.TextLength > 0 And TextBoxCenterY.TextLength > 0 And TextBoxRadius.TextLength > 0 And TextBoxHeight.TextLength > 0) Then
+            ButtonCalculate.Enabled = True
+        Else
+            ButtonCalculate.Enabled = False
         End If
-        Return True
-    End Function
+    End Sub
 
     Private Sub TextBoxValueChanged(sender As Object, e As EventArgs) Handles TextBoxRadius.TextChanged, TextBoxHeight.TextChanged, TextBoxCenterY.TextChanged, TextBoxCenterX.TextChanged
         EnableCalculating()
@@ -76,42 +113,5 @@
             End Select
             tb.SelectionStart = tb.TextLength
         End If
-    End Sub
-
-    Private Sub EnableCalculating()
-        If (TextBoxCenterX.TextLength > 0 And TextBoxCenterY.TextLength > 0 And TextBoxRadius.TextLength > 0 And TextBoxHeight.TextLength > 0) Then
-            ButtonCalculate.Enabled = True
-        Else
-            ButtonCalculate.Enabled = False
-        End If
-    End Sub
-
-    Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ButtonDraw.Enabled = False
-        ButtonCalculate.Enabled = False
-    End Sub
-
-    Private Sub TextBoxEnter(sender As Object, e As EventArgs) Handles TextBoxRadius.Enter, TextBoxHeight.Enter, TextBoxCenterY.Enter, TextBoxCenterX.Enter
-        Dim tb = CType(sender, TextBox)
-        tb.SelectionStart = 0
-        tb.SelectionLength = tb.TextLength
-    End Sub
-
-    Private Sub TextBoxKeyDown(sender As Object, e As KeyEventArgs) Handles TextBoxRadius.KeyDown, TextBoxHeight.KeyDown, TextBoxCenterY.KeyDown, TextBoxCenterX.KeyDown
-        Dim tb = CType(sender, TextBox)
-        Select Case (e.KeyCode)
-            Case Keys.Back
-                If (tb.SelectionLength.Equals(tb.TextLength)) Then
-                    tb.Text = ""
-                End If
-            Case Keys.Left, Keys.Right
-                e.SuppressKeyPress = True
-            Case Else
-        End Select
-    End Sub
-
-    Private Sub TextBoxClick(sender As Object, e As EventArgs) Handles TextBoxRadius.Click, TextBoxHeight.Click, TextBoxCenterY.Click, TextBoxCenterX.Click
-        Dim tb = CType(sender, TextBox)
-        tb.SelectionStart = tb.TextLength
     End Sub
 End Class

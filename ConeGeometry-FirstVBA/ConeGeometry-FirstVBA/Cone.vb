@@ -1,6 +1,7 @@
 ﻿Public Class Cone
     Private center As Point
-    Private radius, height As Double
+    Private radius As Double
+    Private height As Double
 
     Sub New(ByVal center As Point, ByVal radius As Double, ByVal height As Double)
         Me.center = center

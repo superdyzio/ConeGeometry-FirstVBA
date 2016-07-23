@@ -5,16 +5,8 @@
     End Enum
 
     Private cone As Cone
-    Private projection As Integer 'true - projection from the top, false - side projection
+    Private projection As Integer
     Private drawingScale As Integer = 10  ' number of pixels corresponding to coordinate value equal to 1
-
-    Function getXAxisLength() As Integer
-        Return Convert.ToSingle((Me.Width / 2) / drawingScale)
-    End Function
-
-    Function getYAxisLength() As Integer
-        Return Convert.ToSingle((Me.Height / 2) / drawingScale)
-    End Function
 
     Sub New(ByVal cone As Cone, ByVal projection As Integer)
         Me.cone = cone
@@ -26,6 +18,14 @@
         End If
         InitializeComponent()
     End Sub
+
+    Function getXAxisLength() As Integer
+        Return Convert.ToSingle((Me.Width / 2) / drawingScale)
+    End Function
+
+    Function getYAxisLength() As Integer
+        Return Convert.ToSingle((Me.Height / 2) / drawingScale)
+    End Function
 
     Private Sub DrawingForm_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         Dim penNormal = Pens.Black
